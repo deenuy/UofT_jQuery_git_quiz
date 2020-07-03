@@ -43,7 +43,7 @@ var questions = [
     {
         title: "What is HEAD in Git?",
         choices: ["It is the latest commit in a repository", "It points to the tip of the current branch", "It points to the latest commit in the master branch", "It is another name for the master branch"],
-        answer: "git init"
+        answer: "It points to the tip of the current branch"
     },
     {
         title: "Which of the following situations creates a loop in Git's history?",
