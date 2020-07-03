@@ -2,7 +2,6 @@ $(document).ready(function() {
 
   // Make our variables global to the runtime of our application
   var questionNum = 0;
-  var score = 0;
   var answer = null;
   var answer_i = null;
   var answer_status = null;
@@ -23,8 +22,9 @@ $(document).ready(function() {
   var nextBtn = $("<button>");
   var ansStatus = $(".status");
   var ansDisplay = $(".answer");
-  var divUserName = $("<div>");
-  var divModalBtn = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>'
+  var divBr = $("<br>");
+  var divModalBtn = '<button type="button" class="btn btn-success">Finish</button>'
+  var divUserInput = '<input class="form-control form-control-lg userNameInput" type="text" placeholder="Enter username to store score">'
 
   // Create question and multiple choices
   var tdChoices = $("<td>");
@@ -68,10 +68,12 @@ $(document).ready(function() {
   function promptScore(){
     submitBtn.hide();
     nextBtn.hide();
-    question.text("Congratulations! Your score is: ", score);
+    question.text("Congratulations! Your final score is " + userScore + " / " + questions.length);
+    question.append(divBr);
+    question.append(divUserInput);
+    question.append(divBr);
     question.append(divModalBtn);
   }
-
 
   // reset function
   function resetAll(){
@@ -159,7 +161,7 @@ $(document).ready(function() {
     }
     else{
       displayStatus("Correct!");
-      score++
+      userScore = userScore+1;
     }
   }
 
@@ -225,8 +227,9 @@ $(document).ready(function() {
 
       // Verify if quiz is completed
       if(questionNum+1 === questions.length){
-        alert("Congrats! Quiz completed successfully");
+        resetAll();
         promptScore()
+        alert("Congrats! Quiz completed successfully");
       } else {
         // Get the next question
         questionNum++;
