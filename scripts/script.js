@@ -80,9 +80,9 @@ $(document).ready(function() {
     answer = null;
     answer_i = null;
     answer_status = null;
-    timerInterval = null;
-    isSubmited=false;
     timePassed = 0;
+    timeLeft = TIME_LIMIT;
+    isSubmited=false;
 
     question.empty();
     addChoicesEl.empty();
@@ -92,7 +92,8 @@ $(document).ready(function() {
     $("h5").text('')
 
     document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
-
+    document.getElementById("base-timer-path-remaining").setAttribute("stroke-dasharray", 283);
+    document.getElementById("base-timer-path-remaining").style.transition = "0.001s linear all";
   }
 
   // display Quiz
@@ -155,12 +156,14 @@ $(document).ready(function() {
 
       // Display status
       displayStatus("Wrong!!!");
+      $(".status").css("--ansColor", "red");
 
       // Display correct answer:
       displayAnswer(questions[questionNum].answer);
     }
     else{
       displayStatus("Correct!");
+      $(".status").css("--ansColor", "green");
       userScore = userScore+1;
     }
   }
@@ -206,6 +209,7 @@ $(document).ready(function() {
       // Set submitted to true
       isSubmited = true;
       // Validate the answer
+      onTimesUp() 
       getResults();
       // if all questions have completed, redirect to local storage functionality
     });
@@ -236,6 +240,7 @@ $(document).ready(function() {
         // reset the timer and answer variables
         resetAll();
         // Display question and choices
+        onTimesUp();
         displayQuiz();
         // Listener to getUser input from radio type button
         $("input[name=choice]").click(function(){

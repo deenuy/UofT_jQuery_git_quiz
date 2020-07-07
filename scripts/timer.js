@@ -47,13 +47,17 @@ document.getElementById("app").innerHTML = `
 `;
 
 function onTimesUp() {
+  document.getElementById("base-timer-path-remaining").classList.remove(COLOR_CODES.alert.color);
+  document.getElementById("base-timer-path-remaining").classList.add(COLOR_CODES.info.color);
   clearInterval(timerInterval);
 }
 
 // Timer function to start the timer and display time left using setInterval() timer method
 function startTimer() {
+  console.log("Timer started!")
+  document.getElementById("base-timer-path-remaining").style.transition = "1s linear all";
   timerInterval = setInterval(function(){
-    timePassed = timePassed += 1;
+    timePassed = timePassed + 1;
     timeLeft = TIME_LIMIT - timePassed;
     document.getElementById("base-timer-label").innerHTML = formatTime(timeLeft);
     setCircleDasharray();

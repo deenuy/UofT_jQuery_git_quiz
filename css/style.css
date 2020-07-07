@@ -103,6 +103,11 @@ h5{
 	border: 1px solid #c9e2f9
 }
 
+/* Status */
+.status{
+  --ansColor: green;
+  color: var(--ansColor);
+}
 
 /* Modal */
 .btn-success{
