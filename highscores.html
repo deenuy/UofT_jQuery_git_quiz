@@ -22,18 +22,18 @@
   <main>
     <!-- Highscores -->
     <div id='highscores'>
-      <a href="highscores.html">View Highscores</a>
+      <a href="http://">View Highscores</a>
     </div>
     <!-- Quiz Card -->
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="card">
-            <h3 class="card-header"><strong>Welcome!</strong></h3>
+            <h3 class="card-header"><strong>Highscores</strong></h3>
             <div class="card-body">
-              <p>
-                Try to answer the following git-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds!
-              </p>
+                <p>
+                    Latest top 10 users scored highest in order in the quiz!
+                </p>
               <hr>
               <!-- Modal -->
               <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -55,30 +55,17 @@
                   </div>
                 </div>
               </div>
-              <!-- Quiz -->
-              <div id="question"></div>
-              <div id="multipleChoices">
-                <ul id="addChoices"></ul>
-              </div>
+              <!-- User Scores -->
+              <div class="scores"></div>
               <br>
-              <div class="status"></div>
               <br>
-              <div class="answer"></div>
-              <br>
-              <div class="row">
-                <div class="col-md-3" id="addSubmitButton"></div>
-                <div class="col-md-3" id="addNextButton"></div>
-              </div>
-              <br>
-              <button id="button-clear" class="btn btn-dark clear" value="Start Quiz"><span>Start Quiz</span></button>
+              <button id="button-return" class="btn btn-dark clear" value="Go Back" style="margin-top: 5rem;"><span>Go Back</span></button>
+              <button id="button-clearScores" class="btn btn-dark clear" value="Clear Highscores" style="width: 15rem; margin-top: 5rem; margin-left: 5rem;"><span>Clear Highscores</span></button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
-    <!-- timer -->
-    <div id="app"></div>
   </main>
 
   <!-- Footer secton for copyrights and signature -->
