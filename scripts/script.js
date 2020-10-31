@@ -6,10 +6,12 @@ $(document).ready(function() {
   var answer_i = null;
   var answer_status = null;
   var userScore = 0;
+  var userName = null;
   var isSubmited = false;
   var isCompleted = false;
   var isStarted = false;
   var isNext = false;
+  var isFinished = false;
 
   // get DOM selectors
   var startBtn = $(".btn");
@@ -168,6 +170,26 @@ $(document).ready(function() {
     }
   }
 
+  // Add the score to local storage
+  function addToLocalStorage(obj) {
+    localStorage.setItem('quizScore', JSON.stringify(obj))
+  }
+
+  // Render the scores in Highscores page
+  function renderFromStorage(obj) {
+    var scores = JSON.parse(localStorage.getItem('quizScore'));
+
+    if (scores) {
+      var scoreListEl = $("<ul>");
+      $("#scores").append(scoreListEl);
+
+      for (i=0; i < length(scores); i++){
+        var scoreUl = $("<li>");
+        scoreUl.text(scores[i]);
+      }
+    }
+  }
+
   // Begins the quiz functionality
   startBtn.click(function(){
     console.log("Quiz started!");
@@ -261,4 +283,17 @@ $(document).ready(function() {
       }
     });
   });
+
+  // Function to store the user name and score in local storage
+  $(".btn-sucess").click(function(){
+    console.log("Entered Finish Button");
+
+    // If user already submitted, return
+    if(isFinished){
+      return;
+    }
+
+    userName = $(".userNameInput").val();
+    isFinished = true;
+  })
 });

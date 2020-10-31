@@ -7,5 +7,13 @@ $(document).ready(function() {
         //this will redirect us in same window
         document.location.href = "index.html";
         //window.open(go_to_url, '_blank');
-    })
-}
+    });
+
+    // Function to return to home page
+    $("#button-clearScores").click(function(){
+
+        //this will redirect us in same window
+        document.location.href = "index.html";
+        //window.open(go_to_url, '_blank');
+    });
+});
